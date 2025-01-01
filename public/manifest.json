@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "AI Republic Translate",
+  "version": "1.0",
+  "description": "Translate selected text on webpages using LLM",
+  "action": {
+    "default_popup": "index.html"
+  },
+  "permissions": [
+    "contextMenus",
+    "storage",
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://api.openai.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["contentScript.js"]
+    }
+  ],
+  "icons": {
+    "16": "icons/icon.png",
+    "48": "icons/icon.png",
+    "128": "icons/icon.png"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["icons/google-translate.svg"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
